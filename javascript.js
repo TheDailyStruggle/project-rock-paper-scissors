@@ -2,7 +2,11 @@
 // Display alert won or loss
 
 function playRound(playerSelection, computerSelection) {
-
+    if (playerSelection === computerSelection) {
+        console.log("It's a tie! Play again!")
+    } else if (playerSelection !== computerSelection) {
+        console.log("Test Game");
+    }
 }
 
 
@@ -23,7 +27,7 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-playRound();
+playRound(playerSelection, computerSelection);
 
 console.log(1, playerSelection);
 console.log(2, computerSelection);
