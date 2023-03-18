@@ -1,0 +1,19 @@
+body {
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.button {
+    display: flex;
+    align-items: center;
+}
+
+.choice {
+    padding: 20px;
+    font-size: 2em;
+    margin: 50px;
+    border-radius: 8px;
+}
