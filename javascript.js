@@ -3,6 +3,7 @@ const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
 const pScore = document.querySelector('#pScore');
 const cScore = document.querySelector('#cScore');
+const picture = document.querySelector('.status');
 
 let playerSelection = "0";
 
@@ -11,6 +12,7 @@ rockBtn.addEventListener('click', () => {
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
     if (result === "win") {
+        picture.src = "images/win.jpg"
         playerScore++;
         pScore.textContent = `Player Score: ${playerScore}`;
         if (playerScore === 5) {
@@ -21,6 +23,7 @@ rockBtn.addEventListener('click', () => {
             cScore.textContent = `Computer Score: ${computerScore}`;
         }
     } else if (result === "lose") {
+        picture.src = "images/lose.png"
         computerScore++;
         cScore.textContent = computerScore;
         cScore.textContent = `Computer Score: ${computerScore}`;
@@ -32,7 +35,7 @@ rockBtn.addEventListener('click', () => {
             cScore.textContent = `Computer Score: ${computerScore}`;
         }
     } else {
-        alert("It's a tie!");
+        picture.src = "images/tie.png";
     }
 })
 
@@ -41,6 +44,7 @@ paperBtn.addEventListener('click', () => {
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
     if (result === "win") {
+        picture.src = "images/win.jpg"
         playerScore++;
         pScore.textContent = `Player Score: ${playerScore}`;
         if (playerScore === 5) {
@@ -51,6 +55,7 @@ paperBtn.addEventListener('click', () => {
             cScore.textContent = `Computer Score: ${computerScore}`;
         }
     } else if (result === "lose") {
+        picture.src = "images/lose.png"
         computerScore++;
         cScore.textContent = computerScore;
         cScore.textContent = `Computer Score: ${computerScore}`;
@@ -62,7 +67,7 @@ paperBtn.addEventListener('click', () => {
             cScore.textContent = `Computer Score: ${computerScore}`;
         }
     } else {
-        alert("It's a tie!");
+        picture.src = "images/tie.png";
     }
 })
 
@@ -71,6 +76,7 @@ scissorsBtn.addEventListener('click', () => {
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
     if (result === "win") {
+        picture.src = "images/win.jpg"
         playerScore++;
         pScore.textContent = `Player Score: ${playerScore}`;
         if (playerScore === 5) {
@@ -81,6 +87,7 @@ scissorsBtn.addEventListener('click', () => {
             cScore.textContent = `Computer Score: ${computerScore}`;
         }
     } else if (result === "lose") {
+        picture.src = "images/lose.png"
         computerScore++;
         cScore.textContent = computerScore;
         cScore.textContent = `Computer Score: ${computerScore}`;
@@ -92,7 +99,7 @@ scissorsBtn.addEventListener('click', () => {
             cScore.textContent = `Computer Score: ${computerScore}`;
         }
     } else {
-        alert("It's a tie!");
+        picture.src = "images/tie.png";
     }
 })
 
