@@ -20,13 +20,11 @@ body {
             hsl(285deg 100% 25%) 89%,
             hsl(290deg 100% 26%) 93%,
             hsl(293deg 100% 27%) 97%,
-            hsl(297deg 100% 27%) 100%);
+            hsl(297, 100%, 27%) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
-
 
 .button {
     display: flex;
@@ -38,15 +36,60 @@ body {
     font-size: 2em;
     margin: 50px;
     border-radius: 8px;
+    cursor: pointer;
+    animation-duration: 0.07s;
+    box-shadow: 2px 2px 2px 2px black;
+}
+
+.choice:hover {
+    box-shadow: 2px 2px 2px 2px #83008a;
+}
+
+.choice:active {
+    box-shadow: 2px 2px 10px 10px #83008a;
 }
 
 h1 {
     font-size: 3em;
+    font-weight: bold;
     color: white;
+    text-shadow: 2px 2px 4px black;
 }
 
 .status {
-    width: 400px;
+    width: 500px;
+    height: 375px;
     border: solid #85008C 5px;
     border-radius: 8px;
+}
+
+.scoreboard {
+    width: 35%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.scores {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+}
+
+.reset {
+    padding: 20px;
+    margin: 30px 0 0 0;
+    font-size: 2em;
+    border-radius: 8px;
+    cursor: pointer;
+    animation-duration: 0.07s;
+    box-shadow: 2px 2px 2px 2px black;
+}
+
+.reset:hover {
+    box-shadow: 2px 2px 2px 2px #83008a;
+}
+
+.reset:active {
+    box-shadow: 2px 2px 10px 10px #83008a;
 }

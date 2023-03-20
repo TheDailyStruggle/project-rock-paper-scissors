@@ -4,103 +4,37 @@ const scissorsBtn = document.querySelector('#scissors');
 const pScore = document.querySelector('#pScore');
 const cScore = document.querySelector('#cScore');
 const picture = document.querySelector('.status');
+const heading = document.querySelector('h1');
+const resetBtn = document.querySelector('.reset');
 
 let playerSelection = "0";
 
 rockBtn.addEventListener('click', () => {
     playerSelection = "rock"
-    computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-    if (result === "win") {
-        picture.src = "images/win.jpg"
-        playerScore++;
-        pScore.textContent = `Player Score: ${playerScore}`;
-        if (playerScore === 5) {
-            alert(`YOU WIN! 5 to ${computerScore}`);
-            playerScore = 0;
-            computerScore = 0;
-            pScore.textContent = `Player Score: ${playerScore}`;
-            cScore.textContent = `Computer Score: ${computerScore}`;
-        }
-    } else if (result === "lose") {
-        picture.src = "images/lose.png"
-        computerScore++;
-        cScore.textContent = computerScore;
-        cScore.textContent = `Computer Score: ${computerScore}`;
-        if (computerScore === 5) {
-            alert(`YOU Lose :( 5 to ${playerScore}`);
-            playerScore = 0;
-            computerScore = 0;
-            pScore.textContent = `Player Score: ${playerScore}`;
-            cScore.textContent = `Computer Score: ${computerScore}`;
-        }
-    } else {
-        picture.src = "images/tie.png";
-    }
+    game();
 })
 
 paperBtn.addEventListener('click', () => {
     playerSelection = "paper"
-    computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-    if (result === "win") {
-        picture.src = "images/win.jpg"
-        playerScore++;
-        pScore.textContent = `Player Score: ${playerScore}`;
-        if (playerScore === 5) {
-            alert(`YOU WIN! 5 to ${computerScore}`);
-            playerScore = 0;
-            computerScore = 0;
-            pScore.textContent = `Player Score: ${playerScore}`;
-            cScore.textContent = `Computer Score: ${computerScore}`;
-        }
-    } else if (result === "lose") {
-        picture.src = "images/lose.png"
-        computerScore++;
-        cScore.textContent = computerScore;
-        cScore.textContent = `Computer Score: ${computerScore}`;
-        if (computerScore === 5) {
-            alert(`YOU Lose :( 5 to ${playerScore}`);
-            playerScore = 0;
-            computerScore = 0;
-            pScore.textContent = `Player Score: ${playerScore}`;
-            cScore.textContent = `Computer Score: ${computerScore}`;
-        }
-    } else {
-        picture.src = "images/tie.png";
-    }
+    game();
 })
 
 scissorsBtn.addEventListener('click', () => {
     playerSelection = "scissors"
-    computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-    if (result === "win") {
-        picture.src = "images/win.jpg"
-        playerScore++;
-        pScore.textContent = `Player Score: ${playerScore}`;
-        if (playerScore === 5) {
-            alert(`YOU WIN! 5 to ${computerScore}`);
-            playerScore = 0;
-            computerScore = 0;
-            pScore.textContent = `Player Score: ${playerScore}`;
-            cScore.textContent = `Computer Score: ${computerScore}`;
-        }
-    } else if (result === "lose") {
-        picture.src = "images/lose.png"
-        computerScore++;
-        cScore.textContent = computerScore;
-        cScore.textContent = `Computer Score: ${computerScore}`;
-        if (computerScore === 5) {
-            alert(`YOU Lose :( 5 to ${playerScore}`);
-            playerScore = 0;
-            computerScore = 0;
-            pScore.textContent = `Player Score: ${playerScore}`;
-            cScore.textContent = `Computer Score: ${computerScore}`;
-        }
-    } else {
-        picture.src = "images/tie.png";
-    }
+    game();
+})
+
+resetBtn.addEventListener('click', () => {
+    rockBtn.disabled = false;
+    paperBtn.disabled = false;
+    scissorsBtn.disabled = false;
+    resetBtn.hidden = true;
+    playerScore = 0;
+    computerScore = 0;
+    pScore.textContent = `Player Score: ${playerScore}`;
+    cScore.textContent = `Computer Score: ${computerScore}`;
+    heading.textContent = "ROCK PAPER SCISSORS"
+    picture.src = "images/fight.jpg"
 })
 
 
@@ -132,11 +66,6 @@ function playRound(playerSelection, computerSelection) {
 let playerScore = 0;
 let computerScore = 0;
 
-// function playerInput() {
-//     input = prompt("Rock, Paper, or Scissors");
-//     choice = input.toLowerCase();
-//     return choice;
-// }
 
 function getComputerChoice() {
     options = ["rock", "paper", "scissors"];
@@ -145,27 +74,37 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-// function game() {
-//     for (i = 0; i < 5; i++) {
-//         const computerSelection = getComputerChoice();
-//         playRound(playerSelection, computerSelection);
-//         if (result === 'tie') {
-//             console.log(`Computer: ${computerScore} You: ${playerScore}`)
-//         } else if (result === 'win') {
-//             playerScore++;
-//             console.log(`Computer: ${computerScore} You: ${playerScore}`)
-//         } else if (result === 'lose') {
-//             computerScore++;
-//             console.log(`Computer: ${computerScore} You: ${playerScore}`)
-//         }
-//     }
-//     if (playerScore === computerScore) {
-//         alert("After 5 rounds you decided nothing. It's a tie")
-//     } else if (playerScore > computerScore) {
-//         alert(`That's the game. You've conquered the computer ${playerScore} to ${computerScore}`)
-//     } else if (computerScore > playerScore) {
-//         alert(` That's the game. You've lost to the computer ${computerScore} to ${playerScore}`)
-//     }
-// }
+function game() {
+    computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    if (result === "win") {
+        picture.src = "images/win.jpg"
+        playerScore++;
+        pScore.textContent = `Player Score: ${playerScore}`;
+        if (playerScore === 5) {
+            heading.innerText = "YOU WIN!"
+            picture.src = "images/trophy.jpg"
+            rockBtn.disabled = true;
+            paperBtn.disabled = true;
+            scissorsBtn.disabled = true;
+            resetBtn.hidden = false;
+        }
+    } else if (result === "lose") {
+        picture.src = "images/lose.png"
+        computerScore++;
+        cScore.textContent = computerScore;
+        cScore.textContent = `Computer Score: ${computerScore}`;
+        if (computerScore === 5) {
+            heading.innerText = "YOU LOST :("
+            picture.src = "images/lose.jpg"
+            rockBtn.disabled = true;
+            paperBtn.disabled = true;
+            scissorsBtn.disabled = true;
+            resetBtn.hidden = false;
+        }
+    } else {
+        picture.src = "images/tie.png";
+    }
+}
 
-// game();
+
