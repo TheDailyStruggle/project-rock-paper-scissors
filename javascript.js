@@ -78,6 +78,7 @@ function game() {
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
     if (result === "win") {
+        picture.src = "images/win.jpg"
         playerScore++;
         pScore.textContent = `Player Score: ${playerScore}`;
         if (playerScore === 5) {
@@ -88,8 +89,8 @@ function game() {
             scissorsBtn.disabled = true;
             resetBtn.hidden = false;
         }
-        picture.src = "images/win.jpg"
     } else if (result === "lose") {
+        picture.src = "images/lose.png"
         computerScore++;
         cScore.textContent = computerScore;
         cScore.textContent = `Computer Score: ${computerScore}`;
@@ -101,7 +102,6 @@ function game() {
             scissorsBtn.disabled = true;
             resetBtn.hidden = false;
         }
-        picture.src = "images/lose.png"
     } else {
         picture.src = "images/tie.png";
     }
